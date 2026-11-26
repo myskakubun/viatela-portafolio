@@ -39,4 +39,6 @@ Actualizado: 2026-11-26
 - Weimar dirigió el proyecto de una experiencia en Meta Quest 3 basada en el libro *Liri Colombia* de Héctor Sabogal, exhibida en Bilbao del 16 al 20 de julio de 2026.
 
 ## Podcast y canal Myska Kubun
-- Divulgación de historia y datos para la comunidad hispanohablante.
+- Divulgación de historia y datos para la comunidad hispanohablante, en YouTube y en formato podcast.
+- Weimar produce cada capítulo de principio a fin: investigación de fuentes con ayuda de IA y verificación en el documento original, guion, grabación, edición de sonido, edición de vídeo con Wondershare, piezas gráficas con Canva y publicación.
+- Capítulo sobre inteligencia artificial: youtube.com/watch?v=hdwLp2-hFoo

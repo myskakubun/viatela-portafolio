@@ -6,12 +6,29 @@ const CACHE_SECONDS = 300; // los cambios del repositorio aparecen en unos 5 min
 const MAX_PREGUNTA = 500;
 const MAX_HISTORIAL = 6;
 
+const MSG = {
+  es: {
+    limite: "Has hecho muchas preguntas seguidas. Espera un minuto y vuelve a intentarlo.",
+    json: "La petición no es JSON válido.",
+    vacia: "Escribe una pregunta.",
+    base: "No pude leer la base de conocimiento. Inténtalo en unos minutos.",
+    api: "El agente no pudo responder ahora. Inténtalo de nuevo en un momento.",
+  },
+  en: {
+    limite: "You have asked many questions in a row. Wait a minute and try again.",
+    json: "The request is not valid JSON.",
+    vacia: "Type a question.",
+    base: "I could not read the knowledge base. Try again in a few minutes.",
+    api: "The agent could not answer right now. Try again in a moment.",
+  },
+};
+
 const REGLAS = `Eres «Pregúntale a Weimar», el agente del portafolio de Weimar Viatela Aponte.
 
 Reglas:
 1. Responde solo con lo que aparece en la BASE DE CONOCIMIENTO de abajo. No uses lo que sepas por otro lado.
-2. Al final de cada respuesta añade una línea «Fuente: archivo.md» con los archivos que usaste.
-3. Si la base no contiene la respuesta, di que eso no consta en lo que Weimar ha publicado y sugiere escribirle a weimar@viatela.com.
+2. Al final de cada respuesta añade una línea «Fuente: archivo.md» con los archivos que usaste («Source: archivo.md» si respondes en inglés).
+3. La base está en español; tradúcela cuando respondas en otro idioma. Si la base no contiene la respuesta, di que eso no consta en lo que Weimar ha publicado y sugiere escribirle a weimar@viatela.com.
 4. No inventes fechas, cifras, clientes ni logros. Lo que está en diseño o piloto, dilo así.
 5. Habla de Weimar en tercera persona. Responde en el idioma de la pregunta, en dos o tres párrafos cortos como máximo.
 6. Si te piden algo que no tiene que ver con Weimar y su trabajo, di amablemente que solo respondes sobre eso.`;
@@ -64,6 +81,8 @@ export default {
     const h = cors(origin, env);
 
     if (request.method === "OPTIONS") return new Response(null, { headers: h });
+    const al = request.headers.get("Accept-Language") || "";
+    let t = al.toLowerCase().startsWith("en") ? MSG.en : MSG.es;
     if (request.method !== "POST") return json({ error: "Usa POST." }, 405, h);
 
     // Límite de preguntas por visitante (binding de rate limiting de Cloudflare).
@@ -71,7 +90,7 @@ export default {
       const ip = request.headers.get("CF-Connecting-IP") || "anon";
       const { success } = await env.LIMITE.limit({ key: ip });
       if (!success) {
-        return json({ error: "Has hecho muchas preguntas seguidas. Espera un minuto y vuelve a intentarlo." }, 429, h);
+        return json({ error: t.limite }, 429, h);
       }
     }
 
@@ -79,10 +98,12 @@ export default {
     try {
       cuerpo = await request.json();
     } catch {
-      return json({ error: "La petición no es JSON válido." }, 400, h);
+      return json({ error: t.json }, 400, h);
     }
+    if (cuerpo.idioma === "en") t = MSG.en;
+    else if (cuerpo.idioma === "es") t = MSG.es;
     const pregunta = String(cuerpo.pregunta || "").trim().slice(0, MAX_PREGUNTA);
-    if (!pregunta) return json({ error: "Escribe una pregunta." }, 400, h);
+    if (!pregunta) return json({ error: t.vacia }, 400, h);
 
     const historial = Array.isArray(cuerpo.historial) ? cuerpo.historial.slice(-MAX_HISTORIAL) : [];
     const mensajes = historial
@@ -95,7 +116,7 @@ export default {
     try {
       base = await cargarConocimiento(ctx);
     } catch {
-      return json({ error: "No pude leer la base de conocimiento. Inténtalo en unos minutos." }, 502, h);
+      return json({ error: t.base }, 502, h);
     }
 
     const r = await fetch("https://api.anthropic.com/v1/messages", {
@@ -118,7 +139,7 @@ export default {
     });
 
     if (!r.ok) {
-      return json({ error: "El agente no pudo responder ahora. Inténtalo de nuevo en un momento." }, 502, h);
+      return json({ error: t.api }, 502, h);
     }
     const datos = await r.json();
     const texto = (datos.content || []).filter((b) => b.type === "text").map((b) => b.text).join("\n").trim();

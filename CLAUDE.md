@@ -2,7 +2,7 @@
 
 Este repositorio tiene tres partes:
 
-- `sitio/`: la web estática del portafolio (portafolio.viatela.com).
+- `sitio/`: la web estática del portafolio (portafolio.viatela.com). Es bilingüe: `sitio/index.html` (español) y `sitio/en/index.html` (inglés) comparten `estilos.css` y `app.js`. Todo cambio de contenido se hace en las dos versiones.
 - `conocimiento/`: la base de conocimiento del agente «Pregúntale a Weimar». El agente responde **solo** con lo que está en estos archivos.
 - `worker/`: el Cloudflare Worker que sirve al agente.
 

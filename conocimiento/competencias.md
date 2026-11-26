@@ -9,4 +9,5 @@ Actualizado: 2026-11-26
 - Automatización y desarrollo: n8n, Cloudflare Workers, JavaScript, WordPress, aplicaciones web progresivas (PWA), Google Sheets, Brevo.
 - Gobierno de datos e IA responsable: calidad y trazabilidad del dato, protección de datos (RGPD y Ley 1581 de 2012 de Colombia), principios CARE para datos indígenas.
 - Gestión: estrategia de datos, evaluación coste-beneficio de software, relación con dirección y áreas de negocio, gestión del cambio, liderazgo de equipos técnicos.
+- Producción audiovisual: guion, grabación, edición de sonido, edición de vídeo (Wondershare) y diseño gráfico (Canva).
 - Edición y publicación: maquetación en Affinity Publisher, producción de EPUB y publicación independiente en Amazon KDP, Apple Books y Google Play Books.
