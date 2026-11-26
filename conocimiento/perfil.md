@@ -16,6 +16,7 @@ Actualizado: 2026-11-26
   - Lleva un proyecto de datos de punta a punta: ingesta, modelado, visualización y presentación a dirección.
   - Cuenta historias con datos: su libro *La historia en datos, datos en la historia* (2026) es un libro de data storytelling.
   - Construye él mismo lo que propone: agentes en producción, automatizaciones, webs y publicaciones.
+  - Lidera equipos técnicos y presenta resultados a dirección.
   - Trabaja en español e inglés.
 - Idiomas: español nativo; inglés profesional, idioma de trabajo diario (B2, Cambridge Linguaskill Business).
 - Web: viatela.com. Proyecto de divulgación: myskakubun.com. LinkedIn: linkedin.com/in/weimar-viatela-aponte.

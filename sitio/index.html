@@ -121,6 +121,40 @@ h2{font:300 clamp(32px,3.6vw,44px)/1.1 var(--serif);margin:0 0 14px;letter-spaci
 .capas li{counter-increment:capa;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:10px 0;font-size:16px}
 .capas li::before{content:counter(capa);font:500 22px/1 var(--serif);color:var(--tumbaga)}
 
+
+/* Perfil */
+.perfil{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.perfil > *{min-width:0}
+.trayectoria{list-style:none;margin:0;padding:0;border-left:2px solid var(--linea)}
+.trayectoria li{position:relative;padding:0 0 22px 22px}
+.trayectoria li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--cristal);border:2px solid var(--azul)}
+.trayectoria li:first-child::before{background:var(--azul)}
+.trayectoria b{display:block;font-weight:600}
+.trayectoria span{color:var(--niebla);font-size:15px}
+.certs{margin:28px 0 0;padding:0;list-style:none;font-size:15px}
+.certs li{padding:6px 0;border-bottom:1px solid #DDE3E1}
+.certs li span{color:var(--niebla)}
+h3.sub{font:500 22px/1.2 var(--serif);margin:0 0 18px}
+
+/* Habilidades */
+.tabla-skills{width:100%;border-collapse:collapse;font-size:16px}
+.tabla-skills th{text-align:left;font-weight:600;font-size:14px;color:var(--niebla);padding:0 16px 10px 0;border-bottom:2px solid var(--tinta)}
+.tabla-skills td{padding:14px 16px 14px 0;border-bottom:1px solid #DDE3E1;vertical-align:top}
+.tabla-skills td:first-child{font-weight:600;width:22%}
+.tabla-skills td:nth-child(2){color:#3C4846;width:42%}
+.tabla-skills td:last-child a{display:inline-block;margin:0 14px 4px 0;font-size:15px}
+.tabla-skills .pendiente{color:var(--niebla);font-size:14px}
+.blandas{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 48px;margin-top:8px}
+.blandas div{border-top:3px solid var(--tumbaga);padding-top:14px}
+.blandas h4{margin:0 0 6px;font-size:17px}
+.blandas p{margin:0;color:#3C4846;font-size:16px}
+@media (max-width:900px){.perfil,.blandas{grid-template-columns:1fr;gap:32px}}
+@media (max-width:640px){
+  .tabla-skills thead{display:none}
+  .tabla-skills tr{display:block;padding:14px 0;border-bottom:1px solid #DDE3E1}
+  .tabla-skills td{display:block;border:0;padding:2px 0;width:auto!important}
+}
+
 /* Pie */
 footer{background:var(--basalto);color:#C9D2CF;padding:64px 0}
 footer h2{color:#fff}
@@ -154,6 +188,8 @@ footer a:hover{color:#fff}
     <div class="barra">
       <a class="marca" href="https://viatela.com/">Weimar Viatela Aponte</a>
       <nav aria-label="Secciones">
+        <a href="#perfil">Perfil</a>
+        <a href="#habilidades">Habilidades</a>
         <a href="#agente">Pregúntale</a>
         <a href="#trabajo">Trabajo</a>
         <a href="#raizeta">Investigación</a>
@@ -166,8 +202,8 @@ footer a:hover{color:#fff}
         <p>Soy Business Data Manager en Alpargatas Europe y llevo más de nueve años construyendo plataformas de datos e informes en Madrid. También diseño agentes de IA, escribí un libro de historia contada con datos e investigo cómo conservar la memoria de la diáspora latinoamericana sin que un algoritmo la deforme.</p>
         <p>Aquí está el trabajo, enlazado a su versión en vivo o a su código.</p>
         <div class="acciones">
-          <a class="boton boton-oro" href="#agente">Pregúntale al agente</a>
-          <a class="boton boton-linea" href="#trabajo">Ver el trabajo</a>
+          <a class="boton boton-oro" href="#habilidades">Ver habilidades y pruebas</a>
+          <a class="boton boton-linea" href="cv/CV_Weimar_Viatela_Aponte.pdf" download>Descargar CV (PDF)</a>
         </div>
         <p class="nota-lupa">La piedra es un prototipo digital de Raizeta. Pasa la lupa por encima para leer lo que lleva grabado en microtexto.</p>
       </div>
@@ -186,6 +222,73 @@ footer a:hover{color:#fff}
 </header>
 
 <main id="contenido">
+
+<section id="perfil">
+  <div class="envoltura perfil">
+    <div>
+      <h2>Perfil</h2>
+      <p class="intro" style="margin-bottom:28px">Business Data Manager en Alpargatas Europe. Ingeniero Industrial con Máster en Ingeniería de Producción (UPM) y formación universitaria en inteligencia artificial. Trabajo en español e inglés.</p>
+      <h3 class="sub">Trayectoria</h3>
+      <ol class="trayectoria">
+        <li><b>Business Data Manager · Alpargatas Europe</b><span>09/2022 – actualidad · Madrid</span></li>
+        <li><b>Fundador e investigador de IA · Myska Kubun</b><span>01/2024 – actualidad · proyecto propio</span></li>
+        <li><b>Power BI Data Analyst · JTI</b><span>09/2020 – 08/2022 · Madrid</span></li>
+        <li><b>Power BI Data Analyst · Philip Morris International</b><span>07/2019 – 07/2020 · Madrid</span></li>
+        <li><b>Analista de datos y consultor BI · Reale Seguros, Tako Away, Telefónica</b><span>Hasta 2019</span></li>
+      </ol>
+      <div class="acciones" style="margin-top:8px">
+        <a class="boton boton-oro" href="cv/CV_Weimar_Viatela_Aponte.pdf" download>Descargar CV (PDF)</a>
+        <a class="boton" style="border:1px solid var(--linea);color:var(--tinta)" href="https://www.linkedin.com/in/weimar-viatela-aponte/">Ver LinkedIn</a>
+      </div>
+    </div>
+    <div>
+      <h3 class="sub">Formación</h3>
+      <ul class="certs">
+        <li>Programa Universitario en Inteligencia Artificial <span>Western European University, 2026</span></li>
+        <li>Máster Universitario en Ingeniería de Producción <span>Universidad Politécnica de Madrid, 2016</span></li>
+        <li>Ingeniería Industrial <span>Universidad Distrital Francisco José de Caldas, 1999</span></li>
+      </ul>
+      <h3 class="sub" style="margin-top:36px">Certificaciones</h3>
+      <ul class="certs">
+        <li>Microsoft Certified: Power BI Data Analyst Associate (PL-300) <span>2024</span></li>
+        <li>Get Started with Data Governance on Databricks <span>Databricks Academy, 2026</span></li>
+        <li>Microsoft Office Specialist: Excel Expert <span>2018</span></li>
+        <li>Linguaskill Business, inglés B2 <span>University of Cambridge, 2023</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="envoltura">
+    <h2>Habilidades, cada una con su prueba</h2>
+    <p class="intro">Lo que uso en el trabajo diario y dónde puedes comprobarlo.</p>
+    <table class="tabla-skills">
+      <thead><tr><th>Habilidad</th><th>Dónde la aplico</th><th>Prueba</th></tr></thead>
+      <tbody>
+        <tr><td>Power BI, DAX y Power Query</td><td>Modelos semánticos e informes para ventas, finanzas y operaciones en Alpargatas, JTI y Philip Morris. Certificado PL-300.</td><td><span class="pendiente">Informe público en preparación</span></td></tr>
+        <tr><td>Azure Databricks</td><td>Plataforma de datos de Alpargatas Europe: ingesta, transformación y modelado. Agentes con Databricks Genie.</td><td><span class="pendiente">Notebook público y caso en vídeo en preparación</span></td></tr>
+        <tr><td>SQL</td><td>Consultas y transformaciones en Databricks, SQL Server y SSAS desde hace más de nueve años.</td><td><span class="pendiente">Incluido en el notebook de Databricks</span></td></tr>
+        <tr><td>Python</td><td>Extracción de datos por API, limpieza con pandas y aplicaciones con Streamlit.</td><td><a href="#mercado">El Pulso del Amor</a><a href="https://github.com/myskakubun/myska-kubun-data">Notebook de Venezuela</a></td></tr>
+        <tr><td>SAP S/4HANA (datos)</td><td>Coordino la migración de datos críticos y su llegada a la plataforma analítica.</td><td><span class="pendiente">Caso en vídeo en preparación</span></td></tr>
+        <tr><td>Excel avanzado y VBA</td><td>Modelos, automatizaciones y análisis desde mis primeros años en Telefónica. Certificado Excel Expert.</td><td><span class="pendiente">Caso en vídeo en preparación</span></td></tr>
+        <tr><td>Agentes de IA y LLM</td><td>Agentes con la API de Claude, en webs y en WhatsApp, con caché de prompts y control de coste.</td><td><a href="#agente">Probar el agente</a><a href="https://github.com/myskakubun/viatela-portafolio/tree/main/worker">Código</a></td></tr>
+        <tr><td>Automatización con n8n</td><td>Embudo de contacto con medios e instituciones con n8n, Google Sheets y Brevo.</td><td><span class="pendiente">Flujo documentado en preparación</span></td></tr>
+        <tr><td>Git y GitHub</td><td>Control de versiones y despliegue automático de este portafolio con GitHub Actions.</td><td><a href="https://github.com/myskakubun">Mi GitHub</a></td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub" style="margin-top:64px">Cómo trabajo con personas</h3>
+    <div class="blandas">
+      <div><h4>Liderazgo de equipos</h4><p>Lidero equipos técnicos y dirigí el proyecto de realidad virtual de la Asociación Colombia Euskadi, con proveedores, presupuesto cerrado y exhibición en Bilbao.</p></div>
+      <div><h4>Comunicación con dirección</h4><p>Presento a dirección el impacto de la migración a SAP S/4HANA y defiendo la estrategia de datos para Europa.</p></div>
+      <div><h4>Contar con datos</h4><p>Escribí un libro de historia contada con datos y hago divulgación en podcast y conferencias.</p></div>
+      <div><h4>Criterio de negocio</h4><p>Antes de contratar una herramienta de IA mido su coste frente al uso real que tendrá.</p></div>
+      <div><h4>Trabajo en remoto e intercultural</h4><p>Proyectos en español e inglés con clientes en Miami desde Madrid, con seis horas de diferencia.</p></div>
+      <div><h4>Aprendizaje continuo</h4><p>En 2026 terminé el programa universitario en IA y la formación de gobierno de datos de Databricks Academy.</p></div>
+    </div>
+  </div>
+</section>
 
 <section id="agente">
   <div class="envoltura agente">
@@ -236,6 +339,17 @@ footer a:hover{color:#fff}
           <span class="estado estado-vivo">En vivo</span>
           <p>Las visualizaciones del libro, con la trazabilidad de cada dato hasta su fuente.</p>
           <div class="enlaces"><a href="https://myskakubun.com/la-historia-en-datos/">Ver el ecosistema del libro</a></div>
+        </li>
+        <li class="pieza" id="mercado">
+          <h4>El Pulso del Amor: mercado en tiempo real</h4>
+          <span class="estado estado-hecho">Código publicado</span>
+          <p>App en Python que descarga cotizaciones de Yahoo Finance, normaliza las series en base 100 y compara Match Group (Tinder) con NVIDIA en un gráfico interactivo. Python, pandas, API de yfinance, Streamlit y GitHub.</p>
+          <div class="enlaces"><a href="https://github.com/myskakubun/MercadodelAmor">Ver el código</a></div>
+        </li>
+        <li class="pieza">
+          <h4>Notebook de Databricks con SQL y PySpark</h4>
+          <span class="estado estado-prep">En preparación</span>
+          <p>Un caso completo con datos abiertos en Databricks, publicado como notebook ejecutado para leerlo sin cuenta.</p>
         </li>
         <li class="pieza">
           <h4>Informe de Power BI publicado</h4>
@@ -303,6 +417,25 @@ footer a:hover{color:#fff}
           <h4>App para recién llegados a España</h4>
           <span class="estado estado-prep">Piloto</span>
           <p>Aplicación web progresiva con IA que orienta a colombianos y latinoamericanos en sus primeros trámites en España.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div>
+        <h3>Casos en vídeo</h3>
+        <p class="que-prueba">Trabajo de empresa explicado en un par de minutos, con datos anonimizados.</p>
+      </div>
+      <ul class="piezas">
+        <li class="pieza">
+          <h4>De SAP S/4HANA a Power BI pasando por Databricks</h4>
+          <span class="estado estado-prep">En grabación</span>
+          <p>Cómo llegan los datos del ERP a la plataforma analítica y de ahí a los informes que usa dirección.</p>
+        </li>
+        <li class="pieza">
+          <h4>Excel avanzado: un modelo de principio a fin</h4>
+          <span class="estado estado-prep">En grabación</span>
+          <p>Fórmulas dinámicas, Power Query y automatización con VBA sobre un caso real de negocio.</p>
         </li>
       </ul>
     </div>

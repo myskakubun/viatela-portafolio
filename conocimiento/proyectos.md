@@ -31,6 +31,10 @@ Actualizado: 2026-11-26
 - Notebook en Python que descarga del Banco Mundial PIB per cápita (PPA), inversión y educación para comparar a Venezuela con otros países productores y no productores de petróleo. Base para un modelo de control sintético. En desarrollo.
 - Código: github.com/myskakubun/myska-kubun-data
 
+## El Pulso del Amor (app de mercado en tiempo real)
+- Aplicación en Python con Streamlit que descarga cotizaciones de Yahoo Finance (yfinance), normaliza las series en base 100 con pandas y compara Match Group (Tinder) con NVIDIA en un gráfico interactivo con indicadores de rendimiento.
+- Código: github.com/myskakubun/MercadodelAmor
+
 ## Realidad virtual con la Asociación Colombia Euskadi (2026)
 - Weimar dirigió el proyecto de una experiencia en Meta Quest 3 basada en el libro *Liri Colombia* de Héctor Sabogal, exhibida en Bilbao del 16 al 20 de julio de 2026.
 

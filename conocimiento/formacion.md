@@ -9,6 +9,7 @@ Actualizado: 2026-11-26
 
 ## Certificaciones
 - Microsoft Certified: Power BI Data Analyst Associate (PL-300), 04/2024.
+- Get Started with Data Governance on Databricks, Databricks Academy, 09/2026.
 - Linguaskill Business, nivel B2, University of Cambridge, 07/2023.
 - Callan Method, nivel 7 (B2), Callan London School, 12/2023.
 - Microsoft Office Specialist: Excel Expert, 11/2018.
