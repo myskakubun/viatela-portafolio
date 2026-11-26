@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weimar Viatela Aponte · Portafolio de datos e inteligencia artificial</title>
+<meta name="description" content="Trabajo verificable de Weimar Viatela Aponte: datos, visualización, storytelling, agentes de IA e investigación sobre memoria e IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,300;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --basalto:#1F2624;
+  --basalto-2:#2A3330;
+  --cristal:#EDF1EF;
+  --tinta:#172120;
+  --tumbaga:#B4862C;
+  --tumbaga-claro:#D9B566;
+  --azul:#2F5496;
+  --niebla:#5E6B68;
+  --linea:#CBD3D0;
+  --serif:"Spectral",Georgia,serif;
+  --sans:"Public Sans",system-ui,sans-serif;
+  --ancho:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--cristal);color:var(--tinta);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--azul);text-underline-offset:3px}
+a:hover{color:var(--tinta)}
+:focus-visible{outline:3px solid var(--tumbaga);outline-offset:3px;border-radius:2px}
+.envoltura{max-width:var(--ancho);margin:0 auto;padding:0 28px}
+.saltar{position:absolute;left:-999px}
+.saltar:focus{left:16px;top:16px;background:#fff;padding:8px 12px;z-index:10}
+
+/* Cabecera */
+.cabecera{background:var(--basalto);color:#E7ECEA}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.marca{font:500 18px/1 var(--serif);color:#fff;text-decoration:none;letter-spacing:.01em}
+.barra nav{display:flex;gap:26px;font-size:15px}
+.barra nav a{color:#C9D2CF;text-decoration:none}
+.barra nav a:hover{color:#fff}
+
+/* Portada */
+.portada{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:56px 0 88px}
+.portada h1{font:300 clamp(40px,5.4vw,68px)/1.04 var(--serif);margin:0 0 24px;color:#fff;letter-spacing:-.01em}
+.portada p{max-width:34em;color:#C9D2CF;margin:0 0 16px}
+.portada .nota-lupa{font-size:14px;color:#93A19D;margin-top:28px}
+.acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.boton{display:inline-block;padding:12px 20px;border-radius:3px;font-weight:500;font-size:15px;text-decoration:none}
+.boton-oro{background:var(--tumbaga);color:#1B1406}
+.boton-oro:hover{background:var(--tumbaga-claro);color:#1B1406}
+.boton-linea{border:1px solid #56625F;color:#E7ECEA}
+.boton-linea:hover{border-color:#E7ECEA;color:#fff}
+
+/* La piedra */
+.piedra-marco{position:relative;width:min(100%,440px);aspect-ratio:1/0.92;margin-left:auto}
+.piedra{position:absolute;inset:0;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+  background:radial-gradient(120% 90% at 30% 20%,#3B4643 0%,#262E2C 45%,#171C1B 100%);overflow:hidden;cursor:none}
+.piedra::after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0 2px,transparent 2px 7px);pointer-events:none}
+.grabado{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;z-index:2}
+.grabado .apellido{font:500 clamp(30px,4vw,44px)/1 var(--serif);color:#C8D0CD;letter-spacing:.08em;
+  text-shadow:0 -1px 0 rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.12)}
+.grabado .origen{font:italic 300 16px/1.4 var(--serif);color:#9AA6A2;margin-top:10px}
+.micro{position:absolute;inset:6% 4%;font:500 3.6px/5.2px var(--sans);color:rgba(214,222,219,.30);
+  overflow:hidden;word-spacing:1px;text-align:justify;pointer-events:none;user-select:none}
+.lente{position:absolute;width:150px;height:150px;border-radius:50%;pointer-events:none;overflow:hidden;z-index:3;
+  border:3px solid var(--tumbaga);box-shadow:0 10px 30px rgba(0,0,0,.45),inset 0 0 18px rgba(0,0,0,.5);
+  background:#1E2524;transform:translate(-50%,-50%);left:50%;top:76%}
+.lente .zoom{position:absolute;left:0;top:0;transform-origin:0 0}
+.lente .zoom .micro{color:rgba(232,238,236,.92)}
+.lente::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.16),transparent 45%)}
+
+/* Secciones */
+main section{padding:88px 0;border-top:1px solid var(--linea)}
+main section:first-child{border-top:0}
+h2{font:300 clamp(32px,3.6vw,44px)/1.1 var(--serif);margin:0 0 14px;letter-spacing:-.005em}
+.intro{max-width:40em;color:var(--niebla);margin:0 0 44px;font-size:18px}
+
+/* Agente */
+.agente{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.agente > *,.area > *,.portada > *{min-width:0}
+.agente .intro{margin-bottom:24px}
+.principio{border-left:3px solid var(--tumbaga);padding:4px 0 4px 16px;color:var(--tinta);font:italic 300 19px/1.5 var(--serif);max-width:26em}
+.chat{background:#fff;border:1px solid var(--linea);border-radius:6px;display:flex;flex-direction:column;min-height:460px}
+.chat-cuerpo{flex:1;padding:24px;overflow-y:auto;max-height:520px;display:flex;flex-direction:column;gap:16px}
+.msg{max-width:88%;padding:12px 16px;border-radius:6px;white-space:pre-wrap;font-size:16px}
+.msg-yo{align-self:flex-end;background:var(--azul);color:#fff}
+.msg-agente{align-self:flex-start;background:#F2F5F4;border:1px solid #E1E7E5}
+.msg-agente .fuente{display:block;margin-top:8px;font-size:13px;color:var(--niebla)}
+.msg-aviso{align-self:stretch;max-width:none;background:#FBF6EA;border:1px solid #EAD9B0;color:#5A4615;font-size:15px}
+.sugerencias{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 16px}
+.sugerencias button{font:inherit;font-size:14px;border:1px solid var(--linea);background:var(--cristal);color:var(--tinta);border-radius:20px;padding:7px 14px;cursor:pointer}
+.sugerencias button:hover{border-color:var(--azul);color:var(--azul)}
+.chat form{display:flex;gap:10px;border-top:1px solid var(--linea);padding:14px}
+.chat input{flex:1;min-width:0;font:inherit;font-size:16px;border:1px solid var(--linea);border-radius:4px;padding:11px 14px;background:#fff;color:var(--tinta)}
+.chat input:focus-visible{outline:2px solid var(--azul);outline-offset:0}
+.chat form button{font:inherit;font-weight:600;font-size:15px;background:var(--tinta);color:#fff;border:0;border-radius:4px;padding:0 20px;cursor:pointer}
+.chat form button:disabled{opacity:.5;cursor:wait}
+
+/* Pruebas de trabajo */
+.area{display:grid;grid-template-columns:280px 1fr;gap:48px;padding:40px 0;border-top:1px solid var(--linea)}
+.area:first-of-type{border-top:0;padding-top:0}
+.area h3{font:500 24px/1.2 var(--serif);margin:0 0 10px}
+.area .que-prueba{color:var(--niebla);font-size:15px;margin:0}
+.piezas{list-style:none;margin:0;padding:0}
+.pieza{display:grid;grid-template-columns:1fr auto;gap:6px 24px;padding:18px 0;border-bottom:1px solid #DDE3E1}
+.pieza:last-child{border-bottom:0}
+.pieza h4{margin:0;font-size:17px;font-weight:600}
+.pieza p{margin:0;grid-column:1;color:#3C4846;font-size:16px}
+.pieza .enlaces{grid-column:1;display:flex;flex-wrap:wrap;gap:18px;font-size:15px;margin-top:4px}
+.estado{grid-column:2;grid-row:1;align-self:start;font-size:13px;font-weight:500;padding:3px 10px;border-radius:12px;white-space:nowrap}
+.estado-vivo{background:#E1ECDF;color:#2D5A2A}
+.estado-prep{background:#F4ECD8;color:#6E5417}
+.estado-hecho{background:#E2E8F3;color:#24407A}
+
+/* Raizeta */
+.capas{list-style:none;margin:28px 0 0;padding:0;counter-reset:capa}
+.capas li{counter-increment:capa;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:10px 0;font-size:16px}
+.capas li::before{content:counter(capa);font:500 22px/1 var(--serif);color:var(--tumbaga)}
+
+/* Pie */
+footer{background:var(--basalto);color:#C9D2CF;padding:64px 0}
+footer h2{color:#fff}
+footer a{color:var(--tumbaga-claro)}
+footer a:hover{color:#fff}
+.pie-fila{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;font-size:16px}
+.pie-legal{margin-top:48px;font-size:14px;color:#8A9894}
+
+@media (max-width:900px){
+  .portada,.agente,.area{grid-template-columns:1fr}
+  .portada{gap:40px;padding:32px 0 64px}
+  .piedra-marco{margin:0 auto;width:min(100%,360px)}
+  .barra nav{display:none}
+  .area{gap:16px}
+  main section{padding:64px 0}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .envoltura{padding:0 20px}
+  .pieza{grid-template-columns:1fr}
+  .estado{grid-column:1;grid-row:auto;justify-self:start}
+  .lente{width:120px;height:120px}
+}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <div class="barra">
+      <a class="marca" href="https://viatela.com/">Weimar Viatela Aponte</a>
+      <nav aria-label="Secciones">
+        <a href="#agente">Pregúntale</a>
+        <a href="#trabajo">Trabajo</a>
+        <a href="#raizeta">Investigación</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <div class="portada">
+      <div>
+        <h1>Datos, inteligencia artificial y memoria, con pruebas a la vista.</h1>
+        <p>Soy Business Data Manager en Alpargatas Europe y llevo más de nueve años construyendo plataformas de datos e informes en Madrid. También diseño agentes de IA, escribí un libro de historia contada con datos e investigo cómo conservar la memoria de la diáspora latinoamericana sin que un algoritmo la deforme.</p>
+        <p>Aquí está el trabajo, enlazado a su versión en vivo o a su código.</p>
+        <div class="acciones">
+          <a class="boton boton-oro" href="#agente">Pregúntale al agente</a>
+          <a class="boton boton-linea" href="#trabajo">Ver el trabajo</a>
+        </div>
+        <p class="nota-lupa">La piedra es un prototipo digital de Raizeta. Pasa la lupa por encima para leer lo que lleva grabado en microtexto.</p>
+      </div>
+      <div class="piedra-marco" aria-hidden="true">
+        <div class="piedra" id="piedra">
+          <div class="micro" id="micro"></div>
+          <div class="grabado">
+            <span class="apellido">VIATELA</span>
+            <span class="origen">Bogotá · Madrid</span>
+          </div>
+          <div class="lente" id="lente"><div class="zoom" id="zoom"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+
+<section id="agente">
+  <div class="envoltura agente">
+    <div>
+      <h2>Pregúntale a Weimar</h2>
+      <p class="intro">Un agente de IA que responde sobre mi trayectoria, mis proyectos y mi investigación. Solo usa la información que he publicado en el repositorio de este portafolio, y dice de qué archivo sale cada respuesta.</p>
+      <p class="principio">Si algo no consta, lo dice. Es el mismo principio que aplico en Raizeta: una IA que no inventa.</p>
+      <p style="margin-top:24px;font-size:15px"><a href="https://github.com/myskakubun/viatela-portafolio/tree/main/conocimiento">Ver la base de conocimiento</a> <span style="color:var(--niebla)">y</span> <a href="https://github.com/myskakubun/viatela-portafolio/tree/main/worker">el código del agente</a></p>
+    </div>
+    <div class="chat">
+      <div class="chat-cuerpo" id="chat" aria-live="polite">
+        <div class="msg msg-agente">Hola. Pregúntame lo que quieras saber sobre el trabajo de Weimar.</div>
+      </div>
+      <div class="sugerencias" id="sugerencias">
+        <button type="button">¿Cuáles son las fortalezas de Weimar?</button>
+        <button type="button">¿Qué es Raizeta?</button>
+        <button type="button">¿A qué se dedica ahora?</button>
+        <button type="button">¿Qué ha hecho con agentes de IA?</button>
+      </div>
+      <form id="formulario">
+        <label for="pregunta" class="saltar">Tu pregunta</label>
+        <input id="pregunta" name="pregunta" maxlength="500" autocomplete="off" placeholder="Escribe tu pregunta">
+        <button type="submit" id="enviar">Preguntar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="trabajo">
+  <div class="envoltura">
+    <h2>Trabajo que puedes revisar</h2>
+    <p class="intro">Ordenado por lo que demuestra. Lo que todavía estoy preparando aparece marcado como tal.</p>
+
+    <div class="area">
+      <div>
+        <h3>Datos y visualización</h3>
+        <p class="que-prueba">Extraer datos oficiales, modelarlos y convertirlos en gráficos que se entienden.</p>
+      </div>
+      <ul class="piezas">
+        <li class="pieza">
+          <h4>Observatorio Myska Kubun</h4>
+          <span class="estado estado-vivo">En vivo</span>
+          <p>Paneles sobre la diáspora hispanoamericana con datos del INE consultados por API y visualizados en Flourish.</p>
+          <div class="enlaces"><a href="https://myskakubun.com/observatorio/">Abrir el observatorio</a></div>
+        </li>
+        <li class="pieza">
+          <h4>Gráficos de <i>La historia en datos</i></h4>
+          <span class="estado estado-vivo">En vivo</span>
+          <p>Las visualizaciones del libro, con la trazabilidad de cada dato hasta su fuente.</p>
+          <div class="enlaces"><a href="https://myskakubun.com/la-historia-en-datos/">Ver el ecosistema del libro</a></div>
+        </li>
+        <li class="pieza">
+          <h4>Informe de Power BI publicado</h4>
+          <span class="estado estado-prep">En preparación</span>
+          <p>Un modelo semántico completo con datos abiertos, para ver DAX, modelado y diseño de informe en un caso real.</p>
+        </li>
+        <li class="pieza">
+          <h4>Control sintético de Venezuela</h4>
+          <span class="estado estado-prep">En desarrollo</span>
+          <p>¿Cómo habría evolucionado el PIB per cápita de Venezuela con otra política? Datos del Banco Mundial en Python, base del capítulo 6 del libro.</p>
+          <div class="enlaces"><a href="https://github.com/myskakubun/myska-kubun-data">Ver el código</a></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div>
+        <h3>Storytelling con datos</h3>
+        <p class="que-prueba">Convertir una investigación en un relato que se lee, se escucha y se recorre.</p>
+      </div>
+      <ul class="piezas">
+        <li class="pieza">
+          <h4><i>La historia en datos, datos en la historia</i></h4>
+          <span class="estado estado-hecho">Publicado en 2026</span>
+          <p>Libro escrito, maquetado y publicado de forma independiente. Disponible en Amazon, Apple Books, Google Play Books y libros.market.</p>
+          <div class="enlaces"><a href="https://myskakubun.com/la-historia-en-datos/">Conocer el libro</a></div>
+        </li>
+        <li class="pieza">
+          <h4>Los capítulos del libro en una línea del tiempo</h4>
+          <span class="estado estado-prep">En preparación</span>
+          <p>Una presentación interactiva que recorre en orden cronológico los hechos y los datos de cada capítulo.</p>
+        </li>
+        <li class="pieza">
+          <h4>Realidad virtual para la Asociación Colombia Euskadi</h4>
+          <span class="estado estado-hecho">Exhibido en 2026</span>
+          <p>Experiencia en Meta Quest 3 basada en el libro <i>Liri Colombia</i>, mostrada en Bilbao en julio de 2026. Dirigí el proyecto.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div>
+        <h3>Inteligencia artificial</h3>
+        <p class="que-prueba">Agentes que funcionan en producción, con el coste por consulta bajo control.</p>
+      </div>
+      <ul class="piezas">
+        <li class="pieza">
+          <h4>Pregúntale a Weimar</h4>
+          <span class="estado estado-vivo">En esta página</span>
+          <p>Agente que responde solo con una base de conocimiento pública y cita sus fuentes. Claude, Cloudflare Workers y caché de prompts.</p>
+          <div class="enlaces"><a href="#agente">Probarlo</a><a href="https://github.com/myskakubun/viatela-portafolio/tree/main/worker">Ver el código</a></div>
+        </li>
+        <li class="pieza">
+          <h4>Agente del libro</h4>
+          <span class="estado estado-vivo">Para lectores</span>
+          <p>Responde sobre los argumentos, los datos y las fuentes del libro. Acceso verificado con WordPress y autenticación HMAC.</p>
+          <div class="enlaces"><a href="https://myskakubun.com/la-historia-en-datos/agente-myska-kubun/">Ver el agente</a></div>
+        </li>
+        <li class="pieza">
+          <h4>Agente de WhatsApp para atención al cliente</h4>
+          <span class="estado estado-prep">Demo en preparación</span>
+          <p>Agente bilingüe para una empresa de Miami: atiende con la base de conocimiento del negocio y pasa la conversación a la dueña cuando hace falta.</p>
+        </li>
+        <li class="pieza">
+          <h4>App para recién llegados a España</h4>
+          <span class="estado estado-prep">Piloto</span>
+          <p>Aplicación web progresiva con IA que orienta a colombianos y latinoamericanos en sus primeros trámites en España.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="raizeta">
+  <div class="envoltura agente">
+    <div>
+      <h2>Raizeta: memoria que no se borra</h2>
+      <p class="intro">Mi línea de investigación. Una piedra hexagonal que guarda la memoria de una familia de la diáspora y una IA, RAIzeta, que la lee sin inventar nada.</p>
+      <p><a href="https://myskakubun.com/raizeta/">Conocer el proyecto Raizeta</a></p>
+    </div>
+    <div>
+      <p style="margin-top:0">La piedra se lee por capas, igual que la de arriba:</p>
+      <ol class="capas">
+        <li><span><b>A simple vista:</b> el apellido, el lugar de origen y un código QR.</span></li>
+        <li><span><b>Con lupa:</b> los nombres de la familia en microtexto.</span></li>
+        <li><span><b>Dentro del cristal:</b> hijos, abuelos y bisabuelos grabados en planos a distinta profundidad.</span></li>
+        <li><span><b>Con un lector:</b> datos en código denso que RAIzeta consulta y cita, con un nivel de evidencia para cada fuente.</span></li>
+      </ol>
+      <p style="color:var(--niebla);font-size:15px;margin-top:20px">En fase de diseño y piloto: maqueta, pruebas de grabado y prototipo de lector.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="contacto">
+  <div class="envoltura">
+    <h2>Hablemos</h2>
+    <p style="max-width:36em">Consultoría de datos e IA, agentes, mentorías y conferencias, en España e Hispanoamérica.</p>
+    <div class="pie-fila">
+      <a href="mailto:weimar@viatela.com">weimar@viatela.com</a>
+      <a href="https://www.linkedin.com/in/weimar-viatela-aponte/">LinkedIn</a>
+      <a href="https://viatela.com/">viatela.com</a>
+      <a href="https://github.com/myskakubun">GitHub</a>
+    </div>
+    <p class="pie-legal">© 2026 Weimar Viatela Aponte. El código de este portafolio está en GitHub.</p>
+  </div>
+</footer>
+
+<script>
+// Dirección del Worker del agente. Vacía hasta que se publique.
+const AGENT_URL = "";
+
+// ---------- La piedra y la lupa ----------
+(function(){
+  const microtexto = [
+    "Weimar Viatela Aponte","Bogotá 1999 Ingeniería Industrial","Madrid 2016 Máster UPM",
+    "Programa Universitario en IA 2026","Power BI","DAX","Lenguaje M","Azure Databricks","SQL",
+    "SAP S/4HANA","Databricks Genie","Claude","n8n","Cloudflare Workers","Flourish",
+    "La historia en datos, datos en la historia","Myska Kubun","Raizeta","RAIzeta",
+    "no consta","Alpargatas","JTI","Philip Morris International","Liri Colombia","Bilbao 2026",
+    "Observatorio de la diáspora","memoria de diez generaciones"
+  ];
+  let texto = "";
+  while (texto.length < 24000) texto += microtexto.join("   ") + "   ";
+  const micro = document.getElementById("micro");
+  micro.textContent = texto;
+
+  const piedra = document.getElementById("piedra");
+  const lente = document.getElementById("lente");
+  const zoom = document.getElementById("zoom");
+  const Z = 3.2;
+  const copia = micro.cloneNode(true);
+  copia.removeAttribute("id");
+  zoom.appendChild(copia);
+
+  function ajustar(){
+    const r = piedra.getBoundingClientRect();
+    zoom.style.width = r.width + "px";
+    zoom.style.height = r.height + "px";
+  }
+  function mover(x, y){
+    const L = lente.offsetWidth;
+    lente.style.left = x + "px";
+    lente.style.top = y + "px";
+    zoom.style.transform = `translate(${-x*Z + L/2}px, ${-y*Z + L/2}px) scale(${Z})`;
+  }
+  function centro(){ const r = piedra.getBoundingClientRect(); return [r.width*0.5, r.height*0.76]; }
+
+  ajustar();
+  mover(...centro());
+  window.addEventListener("resize", () => { ajustar(); mover(...centro()); });
+
+  function desdeEvento(e){
+    const r = piedra.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    mover(Math.max(0, Math.min(r.width, p.clientX - r.left)), Math.max(0, Math.min(r.height, p.clientY - r.top)));
+  }
+  piedra.addEventListener("pointermove", desdeEvento);
+  piedra.addEventListener("touchmove", (e) => { desdeEvento(e); e.preventDefault(); }, { passive:false });
+
+  // Un único recorrido de la lupa al cargar, si el usuario no pidió menos movimiento.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const r = piedra.getBoundingClientRect();
+    const t0 = performance.now(), dur = 2200;
+    let tocado = false;
+    piedra.addEventListener("pointerenter", () => tocado = true, { once:true });
+    (function paso(t){
+      if (tocado) return;
+      const k = Math.min(1, (t - t0) / dur);
+      const e = k < .5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2) / 2;
+      mover(r.width*(0.22 + 0.28*e), r.height*(0.40 + 0.36*e));
+      if (k < 1) requestAnimationFrame(paso);
+    })(t0);
+  }
+})();
+
+// ---------- Chat del agente ----------
+(function(){
+  const chat = document.getElementById("chat");
+  const form = document.getElementById("formulario");
+  const input = document.getElementById("pregunta");
+  const enviar = document.getElementById("enviar");
+  const historial = [];
+
+  function burbuja(clase, texto){
+    const d = document.createElement("div");
+    d.className = "msg " + clase;
+    const m = texto.match(/\n?Fuente[s]?:\s*(.+)\s*$/i);
+    if (clase === "msg-agente" && m) {
+      d.textContent = texto.slice(0, m.index).trim();
+      const f = document.createElement("span");
+      f.className = "fuente";
+      f.textContent = "Fuente: " + m[1];
+      d.appendChild(f);
+    } else {
+      d.textContent = texto;
+    }
+    chat.appendChild(d);
+    chat.scrollTop = chat.scrollHeight;
+    return d;
+  }
+
+  async function preguntar(q){
+    q = q.trim();
+    if (!q) return;
+    burbuja("msg-yo", q);
+    input.value = "";
+    if (!AGENT_URL) {
+      burbuja("msg-aviso", "El agente todavía no está conectado. Mientras tanto puedes leer la base de conocimiento en GitHub o escribir a weimar@viatela.com.");
+      return;
+    }
+    enviar.disabled = true;
+    const espera = burbuja("msg-agente", "Consultando…");
+    try {
+      const r = await fetch(AGENT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pregunta: q, historial })
+      });
+      const datos = await r.json();
+      espera.remove();
+      if (!r.ok) { burbuja("msg-aviso", datos.error || "El agente no pudo responder. Vuelve a intentarlo."); return; }
+      burbuja("msg-agente", datos.respuesta);
+      historial.push({ rol: "user", texto: q }, { rol: "assistant", texto: datos.respuesta });
+    } catch {
+      espera.remove();
+      burbuja("msg-aviso", "No hay conexión con el agente. Revisa tu conexión y vuelve a intentarlo.");
+    } finally {
+      enviar.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); preguntar(input.value); });
+  document.querySelectorAll("#sugerencias button").forEach((b) =>
+    b.addEventListener("click", () => preguntar(b.textContent))
+  );
+})();
+</script>
+</body>
+</html>
